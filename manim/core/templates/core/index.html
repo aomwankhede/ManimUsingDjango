@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ManimDjango</title>
+    <!-- Load Blockly core -->
+    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
+    <!-- Load the default blocks -->
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <!-- Load a generator -->
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <!-- Load a message file -->
+    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <!-- Load CSS for Blockly -->
+    <link
+      href="https://unpkg.com/blockly/blocks/css.js"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Load CSS for Blockly Toolbox -->
+    <link
+      href="https://unpkg.com/blockly/blocks/blocks.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Load CSS for Blockly Theme -->
+    <link
+      href="https://unpkg.com/blockly/themes/classic.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      #target {
+        height: calc(100% - 40px); /* Subtract the height of the navbar */
+        width: 50%; /* Set the width of the workspace to half of the screen */
+        float: left; /* Float the workspace to the left */
+      }
+      .blocklyToolboxDiv {
+        width: 25%; /* Set the width of the toolbox to 25% of the screen */
+        height: 100%;
+        float: left; /* Float the toolbox to the left */
+        overflow-y: auto; /* Enable vertical scrolling if needed */
+        border-right: 1px solid #ccc; /* Add a border to separate the toolbox from the workspace */
+      }
+      nav {
+        background-color: #333; /* Set the background color of the navbar */
+        color: white; /* Set the text color of the navbar */
+        padding: 10px; /* Add some padding to the navbar */
+        text-align: center; /* Center the text in the navbar */
+      }
+      #video-container {
+        width: 50%; /* Set the width of the video container to half of the screen */
+        height: calc(100% - 40px); /* Subtract the height of the navbar */
+        float: left; /* Float the video container to the left */
+        background-color: #f4f4f4; /* Set the background color of the video container */
+      }
+      #video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Ensure the video fits within the container */
+      }
+      nav {
+        background-color: #f1f1f1; /* Gray background color */
+        padding: 10px 20px; /* Padding for the navbar */
+        overflow: hidden; /* Clear floats */
+      }
+
+      nav a {
+        float: left; /* Float the links to the left */
+        display: block; /* Display links as block elements */
+        color: black; /* Text color for links */
+        text-align: center; /* Center-align text */
+        padding: 14px 20px; /* Padding for each link */
+        text-decoration: none; /* Remove underline from links */
+      }
+
+      nav a:hover {
+        background-color: #ddd; /* Background color on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <button type="button" onClick="handleClick()">check!!</button>
+    </nav>
+    <!-- Define the toolbox -->
+    <xml id="toolbox" style="display: none">
+      <category name="Logic" colour="210">
+        <block type="controls_if"></block>
+        <block type="logic_compare"></block>
+        <block type="logic_operation"></block>
+      </category>
+      <category name="Loops" colour="120">
+        <block type="controls_whileUntil"></block>
+        <block type="controls_for"></block>
+      </category>
+    </xml>
+    <div class="blocklyToolboxDiv"></div>
+    <div id="target"></div>
+    <div id="video-container">
+        <video id="video" controls>
+          <!-- <source src="" type="video/mp4"> -->
+            Your browser does not support the video tag.
+          </video>  
+    </div>
+
+    <!-- Define your custom blocks after Blockly is loaded -->
+    <script>
+      // Define custom block
+      Blockly.Blocks["custom_block"] = {
+        init: function () {
+          this.appendDummyInput().appendField("Custom Block");
+          this.setColour(230);
+          this.setTooltip("");
+          this.setHelpUrl("");
+        },
+      };
+
+      // Register custom block
+      Blockly.JavaScript["custom_block"] = function (block) {
+        // TODO: Implement custom block logic here
+        return "";
+      };
+
+      // Initialize workspace
+      var workspace = Blockly.inject("target", {
+        toolbox: document.getElementById("toolbox"),
+        horizontalLayout: false, // Display toolbox vertically
+        toolboxPosition: "start", // Position toolbox on the left
+      });
+      const handleClick = async ()=>{
+        const res = await fetch('http://127.0.0.1:8000/core/test/',{method:'GET'})
+        const data = res.json();
+        console.log(data)
+      }
+    </script>
+  </body>
+</html>

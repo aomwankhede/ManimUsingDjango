@@ -1,0 +1,5 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/Viraj Wankhede/Desktop/ManimUsingDjango/manim/media/videos/manimCourse/1080p60/partial_movie_files/FadingText/3977891868_4245048076_223132457.mp4'
+file 'file:C:/Users/Viraj Wankhede/Desktop/ManimUsingDjango/manim/media/videos/manimCourse/1080p60/partial_movie_files/FadingText/2852726489_3890345977_3398626454.mp4'
+file 'file:C:/Users/Viraj Wankhede/Desktop/ManimUsingDjango/manim/media/videos/manimCourse/1080p60/partial_movie_files/FadingText/2852726489_1179521561_4119942371.mp4'
+file 'file:C:/Users/Viraj Wankhede/Desktop/ManimUsingDjango/manim/media/videos/manimCourse/1080p60/partial_movie_files/FadingText/2852726489_3890345977_2799348699.mp4'
